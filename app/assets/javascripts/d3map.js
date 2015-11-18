@@ -5,7 +5,6 @@ $(document).ready(function (){
     data.map(function(d) {umap[d[0]]=Number(d[1])});
     console.log(umap);
     tip = d3.tip().html(function(d) { return d; });
-    vis.call()
     var v = Object.keys(umap).map(function(k){return umap[k]})
 // console.log(v);
 
@@ -27,7 +26,7 @@ $(document).ready(function (){
         .attr("height", height)
         .attr("preserveAspectRatio", "xMidYMid")
         .attr("viewBox", "0 0 " + width + " " + height);
-
+    var vis = svg.call(tip)
     var path = d3.geo.path()
         .projection(projection);
 
@@ -176,7 +175,9 @@ $(document).ready(function (){
             .attr("fill", "#cccccc")
             .attr("fill", function(d) { return color(umap[d.properties.name]); })
             .attr("stroke", "black")
-            .attr("stroke-width", "0.35");
+            .attr("stroke-width", "0.35")
+            .on('mouseover',tip.show)
+            .on('mouseout',tip.hide);
 
         svg.selectAll(".place-label")
             .data(topojson.feature(cn, cn.objects.provinces).features)

@@ -147,8 +147,10 @@ d3.tip = function() {
     function direction_n() {
         var bbox = getScreenBBox()
         return {
-            top:  bbox.n.y - node.offsetHeight,
-            left: bbox.n.x - node.offsetWidth / 2
+            //top:  bbox.n.y - node.offsetHeight,
+            //left: bbox.n.x - node.offsetWidth / 2
+            top:  point.y,
+            left: point.x /2 
         }
     }
 
