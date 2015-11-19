@@ -13,40 +13,50 @@
           top:0px;
       }
 
-      /*
-      .background {
-        fill: none;
-        pointer-events: all;
-      }
 
-      .province {
-        fill: #cde;
-        stroke: #fff;
-          stroke-linejoin: round;
-        stroke-linecap: round;
-      }
-      */
+      /*.background {*/
+        /*fill: none;*/
+        /*pointer-events: all;*/
+      /*}*/
 
-      /*#provinces .active, #states .active {
-        fill: #89a;
-      }
-      #cities {
-        stroke-width: 0;
-      }
-      .city {
-        fill: #345;
-        stroke: #fff;
-      }
-      pre.prettyprint {
-        border: 1px solid #ccc;
-        margin-bottom: 0;
-        padding: 9.5px;
-      }*/
+      /*.province {*/
+        /*fill: #cde;*/
+        /*stroke: #fff;*/
+          /*stroke-linejoin: round;*/
+        /*stroke-linecap: round;*/
+      /*}*/
+
+
+      /*#provinces .active, #states .active {*/
+        /*fill: #89a;*/
+      /*}*/
+      /*#cities {*/
+        /*stroke-width: 0;*/
+      /*}*/
+      /*.city {*/
+        /*fill: #345;*/
+        /*stroke: #fff;*/
+      /*}*/
+      /*pre.prettyprint {*/
+        /*border: 1px solid #ccc;*/
+        /*margin-bottom: 0;*/
+        /*padding: 9.5px;*/
+      /*}*/
   </style>
 </head>
 <body>
 <div id="map"></div>
-<div class="d3-tip n" style="position: absolute; opacity: 0; pointer-events: none; top: 14px; left: 142px;"><strong>Frequency:</strong> <span style="color:red">0.12702</span></div>
+<div class="d3-tip n" style="position: absolute; opacity: 0; pointer-events: none; top: 237.7px; left: 243.5px;"><strong>Frequency:</strong> <span style="color:red">0.06094</span></div>
+<div style="display: none; top: 258px; left: 111px;" id="tooltip-container">
+  <div class="tooltip_kv"><span class="tooltip_key">North Carolina</span></div>
+  <div class="tooltip_kv">
+    <span class="tooltip_key">population_estimate_for_july_1_2013_number</span><span class="tooltip_value">9.8M</span>
+  </div>
+  <div class="tooltip_kv">
+    <span class="tooltip_key">census_population_april_1_2010_number</span><span class="tooltip_value">9.5M</span></div>
+  <div class="tooltip_kv">
+    <span class="tooltip_key">census_population_april_1_2000_number</span><span class="tooltip_value">8M</span></div>
+</div>
 <script>
 
     // MAP setup

@@ -176,9 +176,37 @@ $(document).ready(function (){
             .attr("fill", function(d) { return color(umap[d.properties.name]); })
             .attr("stroke", "black")
             .attr("stroke-width", "0.35")
-            .on('mouseover',tip.show)
-            .on('mouseout',tip.hide);
+            .on("mousemove", function(d) {
+                var html = "";
 
+                html += "<div class=\"tooltip_kv\">";
+                html += "<span class=\"tooltip_key\">这里就是Tip";
+                html += "</span>";
+                html += "</div>";
+
+                $("#tooltip-container").html(html);
+                $(this).attr("fill-opacity", "0.8");
+                $("#tooltip-container").show();
+
+                var coordinates = d3.mouse(this);
+
+                var map_width = $('.map')[0].getBoundingClientRect().width;
+
+                if (d3.event.layerX < map_width / 2) {
+                    d3.select("#tooltip-container")
+                        .style("top", (d3.event.layerY + 15) + "px")
+                        .style("left", (d3.event.layerX + 15) + "px");
+                } else {
+                    var tooltip_width = $("#tooltip-container").width();
+                    d3.select("#tooltip-container")
+                        .style("top", (d3.event.layerY + 15) + "px")
+                        .style("left", (d3.event.layerX - tooltip_width - 30) + "px");
+                }
+            })
+            .on("mouseout", function() {
+                $(this).attr("fill-opacity", "1.0");
+                $("#tooltip-container").hide();
+            });
         svg.selectAll(".place-label")
             .data(topojson.feature(cn, cn.objects.provinces).features)
             .enter()
@@ -208,6 +236,7 @@ $(document).ready(function (){
             .enter()
             .append("path")
             .attr("d", path)
+
             .attr("id", function(d) { return d.id; })
             .attr("class", "province")
             .attr("fill", "#cccccc")
